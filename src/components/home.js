@@ -1,4 +1,6 @@
 import React from 'react';
+import 'boxicons/css/boxicons.min.css';
+
 
 function Home() {
   return (
