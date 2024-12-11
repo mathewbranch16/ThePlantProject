@@ -1,55 +1,114 @@
+:root {
+  --main-color: #AEC3B0;
+  --nav-color: #E3EFD3;
+  --text-color: #6B8F71;
+  --text-color-2: #345635;
+  --background-color: #0D2B1D;
+}
+
 .contact {
-    padding: 2rem 0;
-  }
-  
+  padding: 2rem 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto 0;
+  background-color: var(--nav-color);
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color-2);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  height: 150px;
+}
+
+.submit-button {
+  background-color: var(--main-color);
+  color: var(--background-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.submit-button:hover {
+  background-color: #2ecc71;
+}
+
+.submit-button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.submit-message {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+  color: var(--text-color-2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .contact-form {
-    max-width: 600px;
-    margin: 2rem auto 0;
+    padding: 1.5rem;
+    margin: 1.5rem auto;
   }
-  
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  
+
   .form-group input,
   .form-group textarea {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 0.75rem;
   }
-  
-  .form-group textarea {
-    height: 150px;
-  }
-  
+
   .submit-button {
-    background-color: #27ae60;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
+    width: 100%;
+    padding: 1rem;
   }
-  
-  .submit-button:hover {
-    background-color: #2ecc71;
-  }
-  
-  .submit-button:disabled {
-    background-color: #95a5a6;
-    cursor: not-allowed;
-  }
-  
+
   .submit-message {
-    margin-top: 1rem;
-    text-align: center;
-    font-weight: bold;
+    font-size: 0.9rem;
   }
-  
-  
+}
+
+@media (max-width: 480px) {
+  .contact-form {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .submit-button {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .submit-message {
+    font-size: 0.8rem;
+  }
+}
