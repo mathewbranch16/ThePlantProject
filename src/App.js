@@ -10,6 +10,7 @@ import AllPlants from './components/allPlants';
 import PlantDetails from './components/plantDetails';
 import Blog from './components/blog';
 import './App.css';
+import 'boxicons/css/boxicons.min.css';
 
 
 function App() {
