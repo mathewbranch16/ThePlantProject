@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const allPlants = [
     {
@@ -184,21 +185,53 @@ const allPlants = [
     },
   ];
   
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.8, y: 30 },
+  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5 } }
+};
+
 function AllPlants() {
   return (
     <section className="all-plants">
       <div className="container">
-        <h2>All Plants</h2>
-        <div className="plant-grid">
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          All Plants
+        </motion.h2>
+        <motion.div 
+          className="plant-grid"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {allPlants.map(plant => (
-            <div key={plant.id} className="plant-card">
+            <motion.div 
+              key={plant.id} 
+              className="plant-card"
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               <img src={plant.image} alt={plant.name} />
               <h3>{plant.name}</h3>
               <p>{plant.description}</p>
               <Link to={`/plant/${plant.id}`} className="btn">Learn More</Link>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

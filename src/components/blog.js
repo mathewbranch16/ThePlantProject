@@ -1,6 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Import Link for navigation
+import { motion } from 'framer-motion';
 import './styles/blog.css';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
 
 function Blog() {
   const [posts, setPosts] = useState([]);
@@ -110,19 +126,32 @@ function Blog() {
   return (
     <div className="blog">
       <div className="container">
-        <h1>The Plant Blog</h1>
-        <div className="blog-posts">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          The Plant Blog
+        </motion.h1>
+        <motion.div 
+          className="blog-posts"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {posts.map(post => (
-            <Link key={post.id} to={post.link} className="blog-post-link" target='_blank'>
-              <div className="blog-post">
-                <img src={post.image} alt={post.title} className="post-image" />
-                <h2>{post.title}</h2>
-                <p className="post-date">{post.date}</p>
-                <p>{post.excerpt}</p>
-              </div>
-            </Link>
+            <motion.div key={post.id} variants={itemVariants} whileHover={{ scale: 1.03 }}>
+              <Link to={post.link} className="blog-post-link" target='_blank'>
+                <div className="blog-post">
+                  <img src={post.image} alt={post.title} className="post-image" />
+                  <h2>{post.title}</h2>
+                  <p className="post-date">{post.date}</p>
+                  <p>{post.excerpt}</p>
+                </div>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

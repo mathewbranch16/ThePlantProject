@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,7 +10,11 @@ function Header() {
   };
 
   return (
-    <header>
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       <nav className="nav container">
         <i className='bx bx-menu' id="menu-icon" onClick={() => setIsMenuOpen(!isMenuOpen)}></i>
         <div className="logo">
@@ -23,7 +28,7 @@ function Header() {
           <li><Link to="/contact" onClick={handleSectionClick}>Contact</Link></li>
         </ul>
       </nav>
-    </header>
+    </motion.header>
   );
 }
 

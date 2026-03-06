@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 // Plant data
 const allPlants = [
@@ -194,12 +195,27 @@ function PlantDetails() {
   }
 
   return (
-    <section className="plant-details">
+    <motion.section 
+      className="plant-details"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="container">
         <h2>{plant.name}</h2>
         <div className="plant-info">
-          <img src={plant.image} alt={plant.name} />
-          <div className="plant-description">
+          <motion.img 
+            src={plant.image} alt={plant.name} 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          />
+          <motion.div 
+            className="plant-description"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             <p>{plant.description}</p>
             <h3>Care Instructions</h3>
             <p>{plant.careInstructions}</p>
@@ -207,10 +223,10 @@ function PlantDetails() {
             <p>{plant.sunlightNeeds}</p>
             <h3>Watering Frequency</h3>
             <p>{plant.wateringFrequency}</p>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
